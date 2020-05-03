@@ -16,6 +16,15 @@ import entryIcon3 from '../../res/homepage/entrys/3.png'
 import entryIcon4 from '../../res/homepage/entrys/4.png'
 import entryIcon5 from '../../res/homepage/entrys/5.png'
 
+// banner
+import banner1 from '../../res/banner/banner.jpg'
+import banner2 from '../../res/banner/banner1.jpg'
+// sounds
+import sounds from '../../res/sound-filling-fill.png'
+// rooms
+import feature1 from '../../res/feature/feature1.png'
+import feature2 from '../../res/feature/feature2.png'
+import feature3 from '../../res/feature/feature3.png'
 export default class standardPage extends Component {
 
   config = {
@@ -26,32 +35,22 @@ export default class standardPage extends Component {
   store = {
     swipers: [
       {
-        name: '官方公告'
+        name: '谋杀之谜',
+        src: banner1
       },
       {
-        name: '重大剧本上新'
-      },
-      {
-        name: '特殊活动说明'
-      },
-      {
-        name: '签到玩法说明'
+        name: '恶人之森',
+        src: banner2
       },
     ],
+    tips: [
+      '《诡秘玩具城》房间号 1234 等待一名玩家...',
+      '《恶人之森》房间号 2345 等待两名玩家...',
+      '《黑色星期五》房间号 2335 等待一名名玩家...',
+    ],
     plays: [
-      getRandomBasicPlayData(),
-      getRandomBasicPlayData(),
-      getRandomBasicPlayData(),
-      getRandomBasicPlayData(),
-      getRandomBasicPlayData(),
-      getRandomBasicPlayData(),
-      getRandomBasicPlayData(),
-      getRandomBasicPlayData(),
-      getRandomBasicPlayData(),
-      getRandomBasicPlayData(),
-      getRandomBasicPlayData(),
-      getRandomBasicPlayData(),
-      getRandomBasicPlayData(),
+      getRandomBasicPlayData(1),
+      getRandomBasicPlayData(2)
     ]
   }
 
@@ -59,19 +58,6 @@ export default class standardPage extends Component {
 
   componentWillMount () {}
   componentDidShow () {}
-
-  /** 页面交互逻辑函数 */
-
-  setIndicators (e) {
-    const val = e && e.detail && e.detail.current
-    this.setState({
-      activedSwiper: val ||  0
-    })
-  }
-
-  previewImage (url) {
-    Taro.$previewOndImage(url)
-  }
 
   /** 页面跳转函数 */
 
@@ -85,7 +71,7 @@ export default class standardPage extends Component {
 
   render () {
     const { activedSwiper } = this.state
-    const { swipers, plays } = this.store
+    const { swipers, tips, plays } = this.store
 
     return (
       <View className='page with-tabbar'>
@@ -94,18 +80,21 @@ export default class standardPage extends Component {
         <CBlock delay={100}>
           <Swiper className='header-swiper'
             autoplay
+            indicatorColor='#d2d8e3'
+            indicatorActiveColor='rgb(208,18,50)'
+            circular
+            indicatorDots
             onChange={this.setIndicators.bind(this)}
           >
             {
-              swipers.map(s => {
+              swipers.map((s, i) => {
                 return (
-                  <SwiperItem key={s.name}>
-                    {/* <Image
+                  <SwiperItem key={i}>
+                    <Image
                       className='header-image'
-                      src={s}
-                      mode='aspectFill'
-                      onClick={this.previewImage.bind(this, s)}
-                    /> */}
+                      src={s.src}
+                      mode='scaleToFill'
+                    />
                     <View className='max fcc'>
                       <Text className='tool-tip'>{s.name}</Text>
                     </View>
@@ -116,23 +105,27 @@ export default class standardPage extends Component {
           </Swiper>
         </CBlock>
 
-        {/* 轮播图指示器 */}
-        <View className='segment indicators fcc'>
+        {/* 广播 */}
+        <View className='tips'>
+          <Text>约本广场</Text>
+          <Image src={sounds} style="width: 16px;height:16px;margin:0 5px;" />
+          <Swiper
+            className='tips-content' 
+            autoplay
+            vertical
+          >
           {
-            swipers.map((s, idx) => {
-              return (
-                <View
-                  className={'indicator ' + (activedSwiper === idx ? 'actived' : '')}
-                  key={s.name}
-                >
-                </View>
-              )
+            tips.map((t, i) => {
+              return (<SwiperItem key={i}>
+              <Text className='demo-text-1'>{t}</Text>
+            </SwiperItem>)
             })
           }
+          </Swiper>
         </View>
 
         {/* 功能入口 */}
-        <View className='segment entrys-con fsbc'>
+        {/* <View className='segment entrys-con fsbc'>
           <CBlock>
             <Image className='entry-icon' src={entryIcon1} mode='aspectFill' />
             <View className='entry-name'>快速匹配</View>
@@ -153,14 +146,17 @@ export default class standardPage extends Component {
             <Image className='entry-icon' src={entryIcon5} mode='aspectFill' />
             <View className='entry-name'>每日签到</View>
           </CBlock>
-        </View>
+        </View> */}
 
         {/* 房间区域 */}
         <View className='segment rooms-con fsbc p030'>
           <CBlock>
             <View className='room room-big'>
               <View className='max fcc'>
-                <Text className='tool-tip'>游戏大厅</Text>
+                <Image src={feature1} mode='scaleToFill' ></Image>
+                <View className='tool-tip'>
+                  <Text style="font-size: 24px;font-weight:bold;">剧本大厅</Text>
+                </View>
               </View>
             </View>
           </CBlock>
@@ -168,14 +164,20 @@ export default class standardPage extends Component {
             <CBlock>
               <View className='room room-small'>
                 <View className='max fcc'>
-                  <Text className='tool-tip'>新手快速匹配</Text>
+                  <Image src={feature2} mode='scaleToFill' ></Image>
+                  <View className='tool-tip'>
+                    <Text style="font-size: 16px;">快速匹配</Text>
+                  </View>
                 </View>
               </View>
             </CBlock>
             <CBlock>
               <View className='room room-small'>
                 <View className='max fcc'>
-                  <Text className='tool-tip'>高手快速匹配</Text>
+                  <Image src={feature3} mode='scaleToFill' ></Image>
+                  <View className='tool-tip'>
+                  <Text style="font-size: 16px;">上新榜单</Text>
+                  </View>
                 </View>
               </View>
             </CBlock>

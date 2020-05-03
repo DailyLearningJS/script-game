@@ -18,7 +18,6 @@ const DISPLAY_ROLES_INLINE_INROOM = 5
 export default class RoomPage extends Component {
 
   config = {
-    navigationBarBackgroundColor: '#fff',
     navigationBarTitleText: '创建房间'
   }
   state = {

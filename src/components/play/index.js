@@ -4,6 +4,8 @@ import { View, Block, Text, Image } from '@tarojs/components'
 
 import './index.less'
 
+
+
 export default class PlayCmpt extends Component {
 
   static options = {
@@ -28,28 +30,28 @@ export default class PlayCmpt extends Component {
 
   render () {
     const { play } = this.props
-
+    console.log(play)
     return (
       <View className='play-cmpt fsbc'>
 
-        <Image className='play-image br8' src='' mode='aspectFill' />
+        <Image className='play-image br8' src={play.src} mode='aspectFill' />
 
-        <View className='content-con f1 fsbs-c'>
+        <View className='content-con f1'>
 
           {/* name */}
-          <View className='fsbs w100'>
+          <View className='fsbs'>
             <Text className='play-name fs24 bold'>{play.name}</Text>
-            <Text className='stars-con'>
+            {/* <Text className='stars-con'>
               {
                 Array.apply(null, { length: play.stars || 0 }).map((x, idx) => {
                   return <Text className={`iconfont fs20 star star-${play.stars.length}`} key={x + idx}>&#xe6ac;</Text>
                 })
               }
-            </Text>
+            </Text> */}
           </View>
 
           {/* tags */}
-          <View className='tags-con fss'>
+          <View className='tags-con fss w100'>
             {
               play.tags.map(t => {
                 return (
@@ -60,10 +62,10 @@ export default class PlayCmpt extends Component {
           </View>
 
           {/* brief */}
-          <View className='brief-con ellipsis w100'>
+          <View className='brief-con w100 h80'>
             {
               play.brief && play.brief.split('\n').map(b => {
-                return <Text className='fs22 c666' key={b}>{b}</Text>
+                return <Text className='fs22 cfff' key={b}>{b}</Text>
               })
             }
           </View>

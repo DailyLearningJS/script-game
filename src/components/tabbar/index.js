@@ -1,12 +1,22 @@
-import Taro, { Component } from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro';
 // eslint-disable-next-line no-unused-vars
-import { View, Text, Image } from '@tarojs/components'
+import { View, Text, Image } from '@tarojs/components';
 
-import CBlock from '../../components/cblock/index'
+import CBlock from '../../components/cblock/index';
 
-import './index.less'
+import './index.less';
 
-import settingIcon from '../../res/setting.png'
+import home from '../../res/tabBar/home.png';
+import homeFill from '../../res/tabBar/home-fill.png';
+import earch from '../../res/tabBar/Exportservices.png'
+import earthFill from '../../res/tabBar/Exportservices-fill.png';
+import comments from '../../res/tabBar/comments.png';
+import commentsFill from '../../res/tabBar/comments-fill.png';
+import account from '../../res/tabBar/account.png';
+import accountFill from '../../res/tabBar/account-fill.png';
+import { set } from 'mobx';
+import { backHome } from '../../utils/navigator';
+
 
 export default class TabbarCmpt extends Component {
 
@@ -21,27 +31,27 @@ export default class TabbarCmpt extends Component {
     list: [
       {
         name: '首页',
-        icon: '',
-        activedIcon: '',
+        icon: home,
+        activedIcon: homeFill,
         path: '../home/index'
       },
       {
         name: '发现',
-        icon: '',
-        activedIcon: '',
-        path: ''
+        icon: earch,
+        activedIcon: earthFill,
+        path: '../find/index'
       },
       {
         name: '消息',
-        icon: '',
-        activedIcon: '',
-        path: ''
+        icon: comments,
+        activedIcon: commentsFill,
+        path: '../message/index'
       },
       {
         name: '我的',
-        icon: '',
-        activedIcon: '',
-        path: ''
+        icon: account,
+        activedIcon: accountFill,
+        path: '../account/index'
       }
     ]
 
@@ -78,7 +88,7 @@ export default class TabbarCmpt extends Component {
                 <CBlock>
                   <Image
                     className='tabbar-list-item-icon'
-                    src={settingIcon}
+                    src={item.path === activePath ? item.activedIcon : item.icon}
                     mode='aspectFit'
                   />
                 </CBlock>

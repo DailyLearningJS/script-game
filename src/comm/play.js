@@ -3,12 +3,32 @@
 import { plays } from './res/play/index.js'
 
 import { getRandomItem, getRandomFormatedTime, getRandomID, percent } from '../utils/utils.js'
+import play1 from '../res/play/1.jpg'
+import play2 from '../res/play/2.jpg'
+// import play3 from '../res/play/3.jpg'
+// import play4 from '../res/play/4.jpg'
+// import play5 from '../res/play/5.jpg'
+// import play6 from '../res/play/6.jpg'
+// import play7 from '../res/play/7.jpg'
+
+// import user1 from '../res/user/1.png'
+// import user2 from '../res/user/2.png'
+// import user3 from '../res/user/3.png'
+// import user4 from '../res/user/4.png'
+// import user5 from '../res/user/5.png'
+// import user6 from '../res/user/6.png'
+// import user7 from '../res/user/7.png'
+// import user8 from '../res/user/8.png'
+const playPic = [
+  play1, play2,
+  //  play3, play4, play5, play6, play7
+]
 
 /** Model */
 
 // 获取评论数据
 const getCommentModel = () => {
-  const username = ['十指流玉', '福克斯', '欢天喜地', 'GTA吹爆']
+  const username = ['张三', '李四', '王五', '老六', '郝七', '孙八', '包九', '石十']
   const comments = [
     '爱你哟, 吹爆~',
     '先给个红包吧, 挺有意思的',
@@ -19,6 +39,7 @@ const getCommentModel = () => {
   return {
     _id: getRandomID(),
     user: {
+      src: 
       name: getRandomItem(username)
     },
     data: getRandomItem(comments),
@@ -30,14 +51,15 @@ const getCommentModel = () => {
 const getTestModel = () => {
   return getRandomItem(plays)
 }
-const getBasicModel = () => {
+const getBasicModel = (i) => {
   const tags = ['简单本', '4人本', '找出凶手']
   percent() && tags.push('编辑推荐')
 
-  return getTestModel()
+  // return getTestModel()
   return {
     _id: getRandomID(),
     name: '普通的剧本',
+    src: playPic[i-1],
     stars: +((Math.random() * 5).toFixed(0)) || 1,
     // 剧本本身的标签
     tags,
@@ -207,7 +229,8 @@ const getModel = () => {
       name: '洪城客栈',
       // 房间图片
       images: [
-        'http://img2.imgtn.bdimg.com/it/u=1177420711,740641249&fm=15&gp=0.jpg'
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588503715549&di=573e3c1a281b7e501aa00e6629751b4d&imgtype=0&src=http%3A%2F%2Fimg9.doubanio.com%2Fview%2Fgroup_topic%2Fl%2Fpublic%2Fp92128795.jpg',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588503744299&di=d75c9f7e08590fdf3d8b237f09ad6048&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20190924%2F5ed6ea2efbc94cee89dca60cbf334d2a.jpeg'
       ]
     }
   })
@@ -218,8 +241,8 @@ const getModel = () => {
 export function getRandomPlayData () {
   return getModel()
 }
-export function getRandomBasicPlayData () {
-  return getBasicModel()
+export function getRandomBasicPlayData (i) {
+  return getBasicModel(i)
 }
 export function getRandomPlayCommentData () {
   return getCommentModel()

@@ -24,7 +24,10 @@ class App extends Component {
   config = {
     pages: [
       'pages/home/index',
-      'pages/room/index'
+      'pages/room/index',
+      'pages/find/index',
+      'pages/message/index',
+      'pages/account/index'
     ],
     subPackages: [
       {
@@ -41,10 +44,11 @@ class App extends Component {
       // }
     },
     window: {
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: '剧本杀线下助手',
-      navigationBarTextStyle: 'black',
-      backgroundTextStyle: "dark"
+      navigationBarBackgroundColor: '#053D43',
+      navigationBarTitleText: '剧本杀',
+      navigationBarTextStyle: 'white',
+      backgroundColor: "#053D43",
+      backgroundTextStyle: "light"
     },
     networkTimeout: {
       "request": 10000,
