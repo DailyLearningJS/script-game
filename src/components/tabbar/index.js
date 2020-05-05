@@ -31,26 +31,26 @@ export default class TabbarCmpt extends Component {
     list: [
       {
         name: '首页',
-        icon: home,
-        activedIcon: homeFill,
+        icon: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/tabBar/home.png',
+        activedIcon: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/tabBar/home-fill.png',
         path: '../home/index'
       },
       {
         name: '发现',
-        icon: earch,
-        activedIcon: earthFill,
+        icon: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/tabBar/Exportservices.png',
+        activedIcon: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/tabBar/Exportservices-fill.png',
         path: '../find/index'
       },
       {
         name: '消息',
-        icon: comments,
-        activedIcon: commentsFill,
+        icon: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/tabBar/comments.png',
+        activedIcon: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/tabBar/comments-fill.png',
         path: '../message/index'
       },
       {
         name: '我的',
-        icon: account,
-        activedIcon: accountFill,
+        icon: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/tabBar/account.png',
+        activedIcon: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/tabBar/account-fill.png',
         path: '../account/index'
       }
     ]

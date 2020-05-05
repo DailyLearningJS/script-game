@@ -11,24 +11,20 @@ import { getRandomPlayData, getRandomPlayCommentData } from '../../comm/play.js'
 
 import './index.less'
 
-import entryIcon from '../../res/homepage/entrys/1.png'
-
-const DISPLAY_ROLES_INLINE_INROOM = 5
 
 export default class RoomPage extends Component {
 
   config = {
-    navigationBarTitleText: '创建房间'
+    navigationBarTitleText: '剧本详情'
   }
   state = {
+    filterActive: true,
     // 剧本
     play: {
       roles: []
     },
     // 剧本介绍所绑定的角色
     activeRole: {},
-    // 角色信息是否展开
-    longDetails: false
   }
   store = {
     comments: [
@@ -67,11 +63,6 @@ export default class RoomPage extends Component {
       activeRole
     })
   }
-  toggleLongDetails () {
-    this.setState({
-      longDetails: !this.state.longDetails
-    })
-  }
 
   previewImage (url) {
     Taro.$previewOndImage(url)
@@ -82,13 +73,13 @@ export default class RoomPage extends Component {
   /** 渲染相关函数 */
 
   render () {
-    const { play, activeRole } = this.state
+    const { play, filterActive } = this.state
     const { comments } = this.store
-    const activeRoleIdx = play.roles && play.roles.findIndex(x => activeRole === x)
 
     return (
-      <View className='page with-main-button'>
+      <View className='page'>
 
+      <View class='detail'>
         {/* 顶部轮播图 */}
         <CBlock delay={100}>
           <Swiper className='header-swiper' autoplay>
@@ -110,14 +101,17 @@ export default class RoomPage extends Component {
         </CBlock>
 
         {/* 剧本信息 */}
-        <View className='segment segment-info'>
+        <View className='segment-info'>
 
           {/* name */}
           <View className='name-con fsbs'>
             <View className='room-name'>
-              <Text className='fs28 bold'>{play.room.name}</Text>
+              <Text>{play.room.name}
+                  <Text className='author'>作者：旺财</Text>
+              </Text>
             </View>
             <Text className='stars-con'>
+              热度：
               {
                 Array.apply(null, { length: play.stars || 0 }).map((x, idx) => {
                   return <Text className={`iconfont fs24 star star-${play.stars.length}`} key={x + idx}>&#xe6ac;</Text>
@@ -125,160 +119,61 @@ export default class RoomPage extends Component {
               }
             </Text>
           </View>
-
-          {/* tags */}
-          <View className='tags-con fss fw'>
-            {
-              play.tags.map(t => {
-                return (
-                  <Text className='tag meta-tag fs20 c666' key={t}>{t}</Text>
-                )
-              })
-            }
-          </View>
-
-
-          {/* imppression tags */}
-          <View className='tags-con fss fw'>
-            {
-              play.impressions.map(t => {
-                return (
-                  <Text className='tag tag-impression fs20 c666' key={t}>{t}</Text>
-                )
-              })
-            }
-          </View>
-
-
           {/* intro */}
-          <View className='block-header'>
-            <Text>剧本简介</Text>
-          </View>
-          <View className='block block-intro'>
-            <View className='intro'>
-              <Text className='fs22 ls1 c444'>{play.intro}</Text>
+          <View class='detail-intro'>
+            <View className='block block-intro'>
+              <View className='intro'>
+                <Text className='fs22 ls1'>{play.intro}</Text>
+              </View>
             </View>
           </View>
-
+        </View>
           {/* 角色 */}
-          <View className='block-header'>
-            <Text>角色介绍</Text>
-          </View>
           <View className='block roles-con'>
-            {
-              play.roles &&
-              play.roles.length &&
-              play.roles.reduce((h, c) => {
-                if (h.length) {
-                  h[h.length-1].length === DISPLAY_ROLES_INLINE_INROOM
-                    ? h.push([c])
-                    : h[h.length-1].push(c)
-                } else {
-                  h.push([c])
-                }
-                return h
-              }, []).map((xc, idx) => {
-                const resetArray = Array.apply(null, {length: DISPLAY_ROLES_INLINE_INROOM - xc.length})
-
-                return (
-                  <Block key={xc[0].name + idx}>
-                    {
-                      xc.length === DISPLAY_ROLES_INLINE_INROOM ? (
-                        <View className='roles-avatar-con fsbc'>
-                          {
-                            xc.map(r => {
-                              return (
-                                <CBlock key={r.name}>
-                                  <View
-                                    className={'role fcc-c ' + (activeRole.name === r.name ? 'acitve' : '')}
-                                    onClick={this.activeRole.bind(this, r.name)}
-                                  >
-                                    <Image className='role-icon' src={entryIcon} mode='aspectFill' />
-                                    <View className='role-name'>{r.name}</View>
-                                  </View>
-                                </CBlock>
-                              )
-                            })
-                          }
-                        </View>
-                      ) : (
-                        <View className='roles-avatar-con fsbc'>
-                          {
-                            xc.map((r) => {
-                              return (
-                                <CBlock key={r.name}>
-                                  <View
-                                    className={'role fcc-c ' + (activeRole.name === r.name ? 'acitve' : '')}
-                                    onClick={this.activeRole.bind(this, r.name)}
-                                  >
-                                    <Image className='role-icon' src={entryIcon} mode='aspectFill' />
-                                    <View className='role-name'>{r.name}</View>
-                                  </View>
-                                </CBlock>
-                              )
-                            })
-                          }
-                          {/* padding role */}
-                          {
-                            resetArray.map((r, paddingIDX) => {
-                              return (
-                                <View className='role fcc-c' key={r + paddingIDX}>
-                                  <View className='role-padding-con'></View>
-                                </View>
-                              )
-                            })
-                          }
-                        </View>
-                      )
-                    }
-                  </Block>
-                )
-              })
-            }
-            <Swiper
-              className='role-intro'
-              circular
-              current={activeRoleIdx}
-              onChange={this.swiperToActiveRole.bind(this)}
-              style={{
-                height: this.state.longDetails ? '' : Taro.pxTransform(172)
-              }}
-            >
               {
-                play.roles.map(r => {
+                play.roles.map((r, i) => {
+                  console.error(r);
                   return (
-                    <SwiperItem key={r.name}>
-                      <View className='info-item intro'>
-                        <Text className='info-title'>简介: </Text>
+                    <View className='info-item' key={r}>
+                      <View className='left'>
+                        <Image src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/user/' + (i + 1) + '.png'} />
+                      </View>
+                      <View class='right'>
+                        <Text className='info-title'>{r.name}: </Text>
                         <Text className='info-content'>{r.brief}</Text>
                       </View>
-                      {
-                        Object.keys(r.info || []).map(k => {
-                          return (
-                            <View className='info-item' key={k}>
-                              <Text className='info-title'>{k}: </Text>
-                              <Text className='info-content'>{r.info[k]}</Text>
-                            </View>
-                          )
-                        })
-
-                      }
-                    </SwiperItem>
-                  )
+                    </View>)
                 })
               }
-            </Swiper>
-            <View className='mask' onClick={this.toggleLongDetails.bind(this)}></View>
-            <Text
-              className={'click-area iconfont arrow-icon ' + (this.state.longDetails ? 'reverse' : '')}
-              onClick={this.toggleLongDetails.bind(this)}
-            >&#xe652;</Text>
           </View>
 
         </View>
+        <View className='detail-star'>
+          <View className='title'>
+            <Text>综合评分</Text>
+            <Text>更新时间：2020年4月30日</Text>
+          </View>
+          <View className='content'>
+            <View className='number'>
+              8.5 
+              <View className='star-content'>
+                <Text className='iconfont fs20 star'>&#xe6ac;</Text>
+                <Text className='iconfont fs20 star'>&#xe6ac;</Text>
+                <Text className='iconfont fs20 star'>&#xe6ac;</Text>
+                <Text className='iconfont fs20 star'>&#xe6ac;</Text>
+              </View>
+            </View>
+            <View className='people-number'>
+              <Text>1000人评论</Text>
+              <View class='filter'>
+                <Text className={filterActive && 'active'} onClick={this.clickFilter}>按热度</Text> | <Text className={!filterActive && 'active'} onClick={this.clickFilter}>按时间</Text>
+              </View>
+            </View>
+          </View>
+        </View>
 
         {/* 评论信息 */}
-        <View className='segment segment-comments mt20 pt20'>
+        <View className='segment-comments mt20 pt20'>
           <View className='block-header m0'>
             <Text>精彩评论</Text>
           </View>
@@ -296,10 +191,19 @@ export default class RoomPage extends Component {
         </View>
 
         {/* 创建房间按钮 */}
-        <MainButton label='创建房间' onClick={this.tryCreateAnRoom.bind(this)} />
+        {/* <MainButton label='创建房间' onClick={this.tryCreateAnRoom.bind(this)} /> */}
+        <View className='button'>
+          <View className='left' onClick={this.tryCreateAnRoom}>创建房间</View>
+          <View className='right' onClick={this.quickStart}>快速加入</View>
+        </View>
 
       </View>
     )
+  }
+  clickFilter () {
+    this.setState({
+      filterActive: !this.state.filterActive
+    })
   }
 
   /** 业务函数 */
@@ -316,7 +220,14 @@ export default class RoomPage extends Component {
   tryCreateAnRoom () {
     Promise.resolve().then(() => {
       Taro.navigateTo({
-        url: '../packages/play/pages/prepare/index'
+        url: '../packages/play/pages/setting/index'
+      })
+    })
+  }
+  quickStart () {
+    Promise.resolve().then(() => {
+      Taro.navigateTo({
+        url: '../packages/play/pages/game_room/index'
       })
     })
   }

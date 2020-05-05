@@ -4,7 +4,7 @@ import { View, Block, Text, Image } from '@tarojs/components'
 
 import './index.less'
 
-import settingIcon from '../../res/setting.png'
+// import settingIcon from '../../res/setting.png'
 
 export default class CommentCmpt extends Component {
 
@@ -30,25 +30,25 @@ export default class CommentCmpt extends Component {
 
   render () {
     const { comment } = this.props
-
+    var random = Math.floor(Math.random()*7, 0 );
     return (
       <View className='comment-cmpt f1 fsbs-c'>
 
         <View className='user-con fsbc'>
           <Image
             className='user-avatar'
-            src={settingIcon}
+            src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/user/' + (random + 1) + '.png'}
             mode='aspectFit'
           />
           <View className='user-info-con fsbs-c'>
-            <Text className='user-name fs20'>{comment.user.name}</Text>
-            <Text className='time fs18 c666'>{comment.time}</Text>
+            <Text className='user-name fs20 cfff'>{comment.user.name}</Text>
+            <Text className='time fs18 cfff'>{comment.time}</Text>
           </View>
         </View>
 
         <View className='comment-con'>
           <View className='comment'>
-            <Text className='fs22 ls1 c444'>{comment.data}</Text>
+            <Text style='color:rgba(5,61,67,0.7);' className='fs22 ls1'>{comment.data}</Text>
           </View>
         </View>
 

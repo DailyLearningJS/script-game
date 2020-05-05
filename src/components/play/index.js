@@ -29,14 +29,20 @@ export default class PlayCmpt extends Component {
   /** 渲染相关函数 */
 
   render () {
-    const { play } = this.props
-    console.log(play)
+    const { play, showStar } = this.props
     return (
       <View className='play-cmpt fsbc'>
-
-        <Image className='play-image br8' src={play.src} mode='aspectFill' />
-
-        <View className='content-con f1'>
+        <View className={showStar && 'starBox'}>
+          <Image className='play-image br8' src={play.src} mode='aspectFill' />
+          {showStar && <Text className='stars-con'>
+              {
+                Array.apply(null, { length: play.stars || 0 }).map((x, idx) => {
+                  return <Text className={`iconfont fs20 star star-${play.stars.length}`} key={x + idx}>&#xe6ac;</Text>
+                })
+              }
+            </Text>}
+        </View>
+        {!showStar && <View className='content-con f1'>
 
           {/* name */}
           <View className='fsbs'>
@@ -70,6 +76,7 @@ export default class PlayCmpt extends Component {
             }
           </View>
         </View>
+        }
 
       </View>
     )

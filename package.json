@@ -16,11 +16,6 @@
 		"dev:rn": "npm run build:rn -- --watch",
 		"lint": "eslint --fix --ext .js src"
 	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "npm run lint && exit 0"
-		}
-	},
 	"author": "Lionad",
 	"license": "MIT",
 	"dependencies": {

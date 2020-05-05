@@ -3,26 +3,6 @@
 import { plays } from './res/play/index.js'
 
 import { getRandomItem, getRandomFormatedTime, getRandomID, percent } from '../utils/utils.js'
-import play1 from '../res/play/1.jpg'
-import play2 from '../res/play/2.jpg'
-// import play3 from '../res/play/3.jpg'
-// import play4 from '../res/play/4.jpg'
-// import play5 from '../res/play/5.jpg'
-// import play6 from '../res/play/6.jpg'
-// import play7 from '../res/play/7.jpg'
-
-// import user1 from '../res/user/1.png'
-// import user2 from '../res/user/2.png'
-// import user3 from '../res/user/3.png'
-// import user4 from '../res/user/4.png'
-// import user5 from '../res/user/5.png'
-// import user6 from '../res/user/6.png'
-// import user7 from '../res/user/7.png'
-// import user8 from '../res/user/8.png'
-const playPic = [
-  play1, play2,
-  //  play3, play4, play5, play6, play7
-]
 
 /** Model */
 
@@ -39,7 +19,6 @@ const getCommentModel = () => {
   return {
     _id: getRandomID(),
     user: {
-      src: 
       name: getRandomItem(username)
     },
     data: getRandomItem(comments),
@@ -59,7 +38,7 @@ const getBasicModel = (i) => {
   return {
     _id: getRandomID(),
     name: '普通的剧本',
-    src: playPic[i-1],
+    src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/play/' + i +'.jpg',
     stars: +((Math.random() * 5).toFixed(0)) || 1,
     // 剧本本身的标签
     tags,

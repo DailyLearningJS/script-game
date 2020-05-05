@@ -10,37 +10,20 @@ import { getRandomBasicPlayData } from '../../comm/play.js'
 
 import './index.less'
 
-import entryIcon1 from '../../res/homepage/entrys/1.png'
-import entryIcon2 from '../../res/homepage/entrys/2.png'
-import entryIcon3 from '../../res/homepage/entrys/3.png'
-import entryIcon4 from '../../res/homepage/entrys/4.png'
-import entryIcon5 from '../../res/homepage/entrys/5.png'
 
-// banner
-import banner1 from '../../res/banner/banner.jpg'
-import banner2 from '../../res/banner/banner1.jpg'
-// sounds
-import sounds from '../../res/sound-filling-fill.png'
-// rooms
-import feature1 from '../../res/feature/feature1.png'
-import feature2 from '../../res/feature/feature2.png'
-import feature3 from '../../res/feature/feature3.png'
 export default class standardPage extends Component {
 
   config = {
-  }
-  state = {
-    activedSwiper: 0,
   }
   store = {
     swipers: [
       {
         name: '谋杀之谜',
-        src: banner1
+        src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/banner/banner.jpg'
       },
       {
         name: '恶人之森',
-        src: banner2
+        src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/banner/banner1.jpg'
       },
     ],
     tips: [
@@ -50,7 +33,12 @@ export default class standardPage extends Component {
     ],
     plays: [
       getRandomBasicPlayData(1),
-      getRandomBasicPlayData(2)
+      getRandomBasicPlayData(2),
+      getRandomBasicPlayData(3),
+      getRandomBasicPlayData(4),
+      getRandomBasicPlayData(5),
+      getRandomBasicPlayData(6),
+      getRandomBasicPlayData(7)
     ]
   }
 
@@ -70,7 +58,6 @@ export default class standardPage extends Component {
   /** 渲染相关函数 */
 
   render () {
-    const { activedSwiper } = this.state
     const { swipers, tips, plays } = this.store
 
     return (
@@ -78,7 +65,8 @@ export default class standardPage extends Component {
 
         {/* 顶部轮播图 */}
         <CBlock delay={100}>
-          <Swiper className='header-swiper'
+          <Swiper
+            className='header-swiper'
             autoplay
             indicatorColor='#d2d8e3'
             indicatorActiveColor='rgb(208,18,50)'
@@ -89,15 +77,8 @@ export default class standardPage extends Component {
             {
               swipers.map((s, i) => {
                 return (
-                  <SwiperItem key={i}>
-                    <Image
-                      className='header-image'
-                      src={s.src}
-                      mode='scaleToFill'
-                    />
-                    <View className='max fcc'>
-                      <Text className='tool-tip'>{s.name}</Text>
-                    </View>
+                  <SwiperItem key={i} style='background:url({{s.src}});background-repeat: no-repeat;background-size:100% 100%;'>
+                 
                   </SwiperItem>
                 )
               })
@@ -108,7 +89,7 @@ export default class standardPage extends Component {
         {/* 广播 */}
         <View className='tips'>
           <Text>约本广场</Text>
-          <Image src={sounds} style="width: 16px;height:16px;margin:0 5px;" />
+          <Image src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/sound-filling-fill.png' style='width: 16px;height:16px;margin:0 5px;' />
           <Swiper
             className='tips-content' 
             autoplay
@@ -124,38 +105,14 @@ export default class standardPage extends Component {
           </Swiper>
         </View>
 
-        {/* 功能入口 */}
-        {/* <View className='segment entrys-con fsbc'>
-          <CBlock>
-            <Image className='entry-icon' src={entryIcon1} mode='aspectFill' />
-            <View className='entry-name'>快速匹配</View>
-          </CBlock>
-          <CBlock>
-            <Image className='entry-icon' src={entryIcon2} mode='aspectFill' />
-            <View className='entry-name'>上新榜单</View>
-          </CBlock>
-          <CBlock>
-            <Image className='entry-icon' src={entryIcon3} mode='aspectFill' />
-            <View className='entry-name'>创建房间</View>
-          </CBlock>
-          <CBlock>
-            <Image className='entry-icon' src={entryIcon4} mode='aspectFill' />
-            <View className='entry-name'>查找房间</View>
-          </CBlock>
-          <CBlock>
-            <Image className='entry-icon' src={entryIcon5} mode='aspectFill' />
-            <View className='entry-name'>每日签到</View>
-          </CBlock>
-        </View> */}
-
         {/* 房间区域 */}
         <View className='segment rooms-con fsbc p030'>
           <CBlock>
             <View className='room room-big'>
               <View className='max fcc'>
-                <Image src={feature1} mode='scaleToFill' ></Image>
+                <Image src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/feature/feature1.png' mode='scaleToFill' ></Image>
                 <View className='tool-tip'>
-                  <Text style="font-size: 24px;font-weight:bold;">剧本大厅</Text>
+                  <Text style='font-size: 24px;font-weight:bold;'>剧本大厅</Text>
                 </View>
               </View>
             </View>
@@ -164,9 +121,9 @@ export default class standardPage extends Component {
             <CBlock>
               <View className='room room-small'>
                 <View className='max fcc'>
-                  <Image src={feature2} mode='scaleToFill' ></Image>
+                  <Image src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/feature/feature2.png' mode='scaleToFill' ></Image>
                   <View className='tool-tip'>
-                    <Text style="font-size: 16px;">快速匹配</Text>
+                    <Text style='font-size: 16px;'>快速匹配</Text>
                   </View>
                 </View>
               </View>
@@ -174,9 +131,9 @@ export default class standardPage extends Component {
             <CBlock>
               <View className='room room-small'>
                 <View className='max fcc'>
-                  <Image src={feature3} mode='scaleToFill' ></Image>
+                  <Image src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/feature/feature3.png' mode='scaleToFill' ></Image>
                   <View className='tool-tip'>
-                  <Text style="font-size: 16px;">上新榜单</Text>
+                  <Text style='font-size: 16px;'>上新榜单</Text>
                   </View>
                 </View>
               </View>

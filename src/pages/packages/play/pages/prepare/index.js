@@ -9,13 +9,10 @@ import { getRandomPlayData } from '../../../../../comm/play.js'
 
 import './index.less'
 
-import entryIcon from '../../../../../res/homepage/entrys/1.png'
-import roleImage from '../../../../../res/role.png'
 
 export default class PreparePage extends Component {
 
   config = {
-    navigationBarBackgroundColor: '#fff',
     navigationBarTitleText: '准备界面'
   }
   state = {
@@ -47,7 +44,7 @@ export default class PreparePage extends Component {
   /** 页面生命周期 & 生命周期相关函数 */
 
   componentWillMount () {
-    this.initData()
+    this.initData();
   }
   componentDidShow () {}
 
@@ -56,13 +53,13 @@ export default class PreparePage extends Component {
   toggleisLongDetails () {
     this.setState({
       isLongDetails: !this.state.isLongDetails
-    })
+    });
   }
 
   activeRole (r) {
-    if (this.state.isReady) return
-    const { play, userinfo, roleSelectedRec } = this.state
-    const username = userinfo.name
+    // if (this.state.isReady) return
+    const { play, userinfo, roleSelectedRec } = this.state;
+    const username = userinfo.name;
 
     // 从其他角色的列表中取出自己
     Object.entries(roleSelectedRec).map(e => {
@@ -86,7 +83,6 @@ export default class PreparePage extends Component {
   getReady () {
     const { userinfo, roleSelectedRec, roleReadydRec, readyRoleKey } = this.state
     const username = userinfo.name
-    console.log(roleSelectedRec,roleReadydRec)
     Object.entries(roleSelectedRec).map(e => {
       const [k, v] = e
       if (v.includes(username)) {
@@ -119,10 +115,10 @@ export default class PreparePage extends Component {
         {/* players-con */}
         <View className='players-con fsc'>
           {
-            players.map(player => {
+            players.map((player, i) => {
               return (
                 <View className='player-con fcc-c' key={player.name}>
-                  <Image className='role-icon' src={entryIcon} mode='aspectFill' />
+                  <Image className='role-icon' src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/user/' + (i + 1) + '.png'} mode='aspectFill' />
                   <View className='role-name'>{player.name}</View>
                 </View>
               )
@@ -174,7 +170,7 @@ export default class PreparePage extends Component {
                       className='role-con br8 bgc-w fsac'
                       onClick={this.activeRole.bind(this, r)}
                     >
-                      <Image className='role-avatar' src={roleImage} mode='aspectFill' />
+                      <Image className='role-avatar' src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/user/' + (idx + 1) + '.png'} mode='aspectFill' />
                       <View className='role-info-con h100 f1 fsbs-c'>
                         <View className='role-info-wrapper'>
                           <View className='role-name fs24 c444'>{r.name}</View>
@@ -188,7 +184,7 @@ export default class PreparePage extends Component {
                               roleSelectedRec[r.name].map((player, pidx) => {
                                 return (
                                   <View key={player.name}>
-                                    <Image className={'player-icon ' + (pidx === 0 ? 'first' : '')} src={entryIcon} mode='aspectFill' />
+                                    <Image className={'player-icon ' + (pidx === 0 ? 'first' : '')} src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/user/' + (pidx + 1) + '.png'} mode='aspectFill' />
                                     {
                                       roleSelectedRec[r.name].length > 1 && pidx === 0 && (
                                         <View className='split-line'></View>

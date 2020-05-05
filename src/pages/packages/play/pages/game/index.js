@@ -13,7 +13,6 @@ import { getRandomPlayData } from '../../../../../comm/play.js'
 import './index.less'
 
 import entryIcon from '../../../../../res/homepage/entrys/1.png'
-// import roleImage from '../../../../../res/role.png'
 
 @inject('playStore')
 @inject('appStore')
@@ -234,7 +233,7 @@ export default class PreparePage extends Component {
     }, []) || []
     // 当前激活的玩家掌握的线索的集合
     const activeCollection = active.collection || (threadCollections.length && threadCollections[0].key) || ''
-    // 当前激活的玩家掌握的线索的集合中的线索 (...绕死我了)
+    // 当前激活的玩家掌握的线索的集合中的线索
     const threadInCollections = Object.values(playerThreads).reduce((h, c) => {
       const collectionKey = c.collectionKey
       const key = Object.keys(playerThreads).find(k => playerThreads[k] === c)

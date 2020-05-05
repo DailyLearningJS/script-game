@@ -1,21 +1,17 @@
 import Taro, { Component } from '@tarojs/taro'
 // eslint-disable-next-line no-unused-vars
-import { Block, View, Text, Image, Swiper, SwiperItem, Button, ScrollView } from '@tarojs/components'
+import { Block, View, Text, Image, Swiper, SwiperItem, Button, ScrollView } from '@tarojs/components';
 
-import CBlock from '../../components/cblock/index'
-import Comment from '../../components/comment/index'
-import MainButton from '../../components/mainButton/index'
-
-import { getRandomPlayData, getRandomPlayCommentData } from '../../comm/play.js'
+import { getRandomPlayData, getRandomPlayCommentData } from '../../../../../comm/play.js';
 
 
 import './index.less'
 
 
-export default class RoomPage extends Component {
+export default class GamePage extends Component {
 
   config = {
-    navigationBarTitleText: '剧本详情'
+    navigationBarTitleText: '剧本杀'
   }
   state = {
     filterActive: true,
@@ -128,72 +124,6 @@ export default class RoomPage extends Component {
               <View className='orange'>系统：</View>
               <View>
                 <Text className='white'>我是玩家1</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【张三】</Text>角色。
-              </View>
-            </View>
-            <View className='message-item'>
-              <View className='orange'>系统：</View>
-              <View>
-                <Text className='white'>我是玩家2</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【王五】</Text>角色。
-              </View>
-            </View>
-            <View className='message-item'>
-              <View className='orange'>系统：</View>
-              <View>
-                <Text className='white'>我是玩家2</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【王五】</Text>角色。
-              </View>
-            </View>
-            <View className='message-item'>
-              <View className='orange'>系统：</View>
-              <View>
-                <Text className='white'>我是玩家2</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【王五】</Text>角色。
-              </View>
-            </View>
-            <View className='message-item'>
-              <View className='orange'>系统：</View>
-              <View>
-                <Text className='white'>我是玩家2</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【王五】</Text>角色。
-              </View>
-            </View>
-            <View className='message-item'>
-              <View className='orange'>系统：</View>
-              <View>
-                <Text className='white'>我是玩家2</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【王五】</Text>角色。
-              </View>
-            </View>
-            <View className='message-item'>
-              <View className='orange'>系统：</View>
-              <View>
-                <Text className='white'>我是玩家2</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【王五】</Text>角色。
-              </View>
-            </View>
-            <View className='message-item'>
-              <View className='orange'>系统：</View>
-              <View>
-                <Text className='white'>我是玩家2</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【王五】</Text>角色。
-              </View>
-            </View>
-            <View className='message-item'>
-              <View className='orange'>系统：</View>
-              <View>
-                <Text className='white'>我是玩家2</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【王五】</Text>角色。
-              </View>
-            </View>
-            <View className='message-item'>
-              <View className='orange'>系统：</View>
-              <View>
-                <Text className='white'>我是玩家2</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【王五】</Text>角色。
-              </View>
-            </View>
-            <View className='message-item'>
-              <View className='orange'>系统：</View>
-              <View>
-                <Text className='white'>我是玩家2</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【王五】</Text>角色。
-              </View>
-            </View>
-            <View className='message-item'>
-              <View className='orange'>系统：</View>
-              <View>
-                <Text className='white'>我是玩家2</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【王五】</Text>角色。
               </View>
             </View>
             <View className='message-item'>

@@ -27,7 +27,7 @@ class App extends Component {
       'pages/room/index',
       'pages/find/index',
       'pages/message/index',
-      'pages/account/index'
+      'pages/account/index',
     ],
     subPackages: [
       {
@@ -35,6 +35,8 @@ class App extends Component {
         pages: [
           'pages/prepare/index',
           'pages/game/index',
+          'pages/game_room/index',
+          'pages/setting/index'
         ]
       }
     ],
