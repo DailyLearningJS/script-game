@@ -18,8 +18,7 @@ export default class RoomPage extends Component {
     navigationBarTitleText: '剧本杀桌游'
   }
   state = {
-    src: "",
-    cameraContext: null
+    src: ""
   }
 
   /** 页面生命周期 & 生命周期相关函数 */
@@ -38,11 +37,11 @@ export default class RoomPage extends Component {
 
   /** 页面跳转函数 */
   takePhoto() {
-    console.error('tempImagePath', 123)
     const ctx = Taro.createCameraContext()
     ctx.takePhoto({
      quality: 'high',
      success: (res) => {
+      console.error('tempImagePath success')
       this.setState({
        src: res.tempImagePath
       })
@@ -51,11 +50,11 @@ export default class RoomPage extends Component {
       console.error('tempImagePath', err)
      },
      complete: ()=>{
-      Promise.resolve().then(() => {
+      setTimeout(function(){
         Taro.navigateTo({
-          url: '../packages/play/pages/game_room/index'
+          url: '/pages/packages/play/pages/role/index'
         })
-      })
+      }, 3000)
      }
     })
   }
@@ -64,16 +63,20 @@ export default class RoomPage extends Component {
   render () {
     return (
       <View className='page'>
-        <Camera mode="normal" device-position="front" flash="off" binderror="error" className="camera"></Camera>
+        { !this.state.src  ? <Camera mode="normal" device-position="front" flash="off" binderror="error" className="camera"></Camera>
+        : <Image src={this.state.src} className="camera"></Image> }
         <View className="wxfeature-footer">
-          <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/wxfeature/picture.png"></Image>
+          <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@2.0/src/res/wxfeature/picture.png"></Image>
           <Button className='camera-button' plain onClick={this.takePhoto}>拍照</Button>
-          <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/wxfeature/rotate.png"></Image>
+          <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@2.0/src/res/wxfeature/rotate.png"></Image>
         </View>
       </View>
     )
   }
   /** 业务函数 */
   initData () {
+    this.setState({
+      src: ''
+    })
   }
 }

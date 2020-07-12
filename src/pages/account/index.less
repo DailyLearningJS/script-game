@@ -1,42 +1,203 @@
 .page {
-    background: rgba(5,61,67,0.4);
-    padding-bottom: 0px;
-    display: flex;
-    flex-direction: column;
-    .orange {
-      color: #E76E1A;
-      height: 100px;
-      line-height: 100px;
-    }
-    .role-pic {
-      margin: 20px 60px;
-      background: #064A4A;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      color: #fff;
-      image {
-        flex: 1;
+  background: rgba(5,61,67,0.4);
+  padding-bottom: 0px;
+}
+
+.roles-con {
+  position: relative;
+  margin: 20px 30px;
+  padding: 20px;
+  border-radius: 8px;
+  background: rgba(5,61,67,0.6);
+  .roles-avatar-con {
+    padding-bottom: 15px;
+    width: 100%;
+
+    .role {
+      min-width: 80px;
+      margin-right: 20px;
+      transition: .1s;
+      transform: scale(.8,.8);
+      &.acitve {
+        transition: .1s;
+        transform: scale(1,1);
       }
-    }
-    .role-tip {
-      margin: 60px;
-      color: #053D43;
-    }
-    .role-footer {
-      display: flex;
-      justify-content: space-around;
-      .first {
-        background: #053D43;
-        color: #fff;
-        font-size: 28px;
+
+      .role-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
       }
-      .second {
-        background: #E76E1A;
-        color: #fff;
-        font-size: 28px;
+      .role-name {
+        margin-top: 8px;
+        font-size: 24px;
       }
     }
   }
-  
- 
+  .role-intro {
+    border-top: solid 1px #eee;
+    background: #fafafa;
+    padding: 25px 0;
+    line-height: 30px;
+    min-height: 150px;
+    transition: .1s;
+  }
+}
+.info-item {
+  display: flex;
+  margin-top: 6px;
+  height: 100px;
+  .left {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .right {
+    margin-left: 20px;
+    flex: 1;
+    .info-title {
+      display: block;
+      font-size: 22px;
+      color: #F2DC07;
+      height: 30px;
+    }
+    .info-content {
+      display: block;
+      height: 60px;
+      font-size: 22px;
+      color: #053D43;
+      letter-spacing: 1px;
+      overflow: hidden;
+    }
+  }
+}
+.segment-comments {
+  padding: 40px;
+}
+.detail-star {
+  border-top: 1px solid  rgb(140,154,159);
+  padding: 40px;
+  color: rgb(5,61,67);
+  font-size: 20px;
+  .title {
+    display: flex;
+    font-size: 25px;
+    justify-content: space-between;
+  }
+  .content {
+    .number {
+      font-weight: bold;
+      font-size: 80px;
+      color: #E76E1A;
+    }
+    .star-content {
+      display:inline-block;
+      position: relative;
+    }
+    .people-number {
+      font-size: 20px;
+      display:flex;
+      justify-content: space-between;
+      .filter {
+        color: #fff;
+        .active {
+          color: #F2DC07;
+        }
+      }
+    }
+  }
+}
+.button {
+  height: 80px;
+  line-height: 80px;
+  display: flex;
+  font-size: 30px;
+  .left {
+    width: 50%;
+    background: #F2DC07;
+    color: #fff;
+    text-align: center;
+  }
+  .right {
+    width: 50%;
+    background: #E76E1A;
+    color: #fff;
+    text-align: center;
+  }
+}
+.room-name {
+  background: rgba(5,61,67,0.6);
+  color: #fff;
+  font-size: 24px;
+  height: 60px;
+  line-height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .room-name-item {
+    width: 25%;
+    text-align: center;
+  }
+  .name {
+    font-size: 26px;
+    font-weight: bold;
+    color: #F2DC07;
+  }
+  .button {
+    width: 120px;
+    padding: 0px;
+    background:#E76E1A;
+    text-align: center;
+    height: 40px;
+    font-size: 24px;
+    color: #fff;
+    line-height: 40px;
+  }
+}
+.way {
+  text-align: right;
+  padding: 0 40px;
+  .way-detail {
+    display: inline-block;
+    width: 280px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    color: #F2DC07;
+    transform: skewX(-10deg);
+    background: rgba(5,61,67,0.6);
+    text-align: center;
+  }
+}
+.main {
+  position:fixed;
+  bottom: 0px;
+  height: 300px;
+  background: transparent;
+  .scrollview {
+    flex: 1;
+    color: #000;
+    padding: 40px;
+    font-size: 24px;
+    .message-item {
+      margin-bottom: 10px;
+      .orange {
+        color: #E76E1A;
+      }
+      .white {
+        color: #fff;
+      }
+    }
+    
+  }
+}
+.gameBox {
+  width: 100%;
+  height: 100vh;
+  background: url('https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@2.0/src/res/game/bg1.jpg') center no-repeat;
+  background-size: 100% 100%;
+}

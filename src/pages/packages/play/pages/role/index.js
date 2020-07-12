@@ -35,15 +35,15 @@ export default class RoomPage extends Component {
       <View className='page'>
         <View className="role-pic">
           <Text className="orange">乐婉</Text>
-          <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/roles/1.jpg"></Image>
+          <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@2.0/src/res/roles/1.jpg"></Image>
           <Text>相似度: <Text className="orange">75%</Text></Text>
         </View>
         <View className="role-tip">
         女，瘦弱内秀，做事勤快，待人温柔。穿传统服饰，平底鞋。
         </View>
         <View className="role-footer">
-          <Button className="first" onClick={restart}>重新匹配</Button>
-          <Button className="second" onClick={start}>马上开始</Button>
+          <Button className="first" onClick={this.restart}>重新匹配</Button>
+          <Button className="second" onClick={this.start}>马上开始</Button>
         </View>
       </View>
     )
@@ -51,14 +51,14 @@ export default class RoomPage extends Component {
   restart () {
     Promise.resolve().then(() => {
         Taro.navigateTo({
-          url: '../packages/play/pages/game_room/index'
+          url: '/pages/packages/play/pages/game_room/index'
         })
       })
   }
   start () {
     Promise.resolve().then(() => {
         Taro.navigateTo({
-          url: '../packages/play/pages/game/index'
+          url: '/pages/packages/play/pages/game/index'
         })
       })
   }

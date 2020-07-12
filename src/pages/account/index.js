@@ -1,21 +1,19 @@
 import Taro, { Component } from '@tarojs/taro'
 // eslint-disable-next-line no-unused-vars
-import { Camera, Block, View, Text, Image, Swiper, SwiperItem, Button, ScrollView } from '@tarojs/components'
-
-import CBlock from '../../components/cblock/index'
-import Comment from '../../components/comment/index'
-import MainButton from '../../components/mainButton/index'
-
-import { getRandomPlayData, getRandomPlayCommentData } from '../../comm/play.js'
+import { Block, View, Text, Image, Swiper, SwiperItem, Button, ScrollView } from '@tarojs/components';
 
 
 import './index.less'
 
 
-export default class RoomPage extends Component {
+export default class AccountPage extends Component {
 
   config = {
-    navigationBarTitleText: '剧本杀桌游'
+    navigationBarTitleText: '剧本杀'
+  }
+  state = {
+  }
+  store = {
   }
 
   /** 页面生命周期 & 生命周期相关函数 */
@@ -27,28 +25,56 @@ export default class RoomPage extends Component {
 
   /** 页面交互逻辑函数 */
 
- 
+
+  previewImage (url) {
+    Taro.$previewOndImage(url)
+  }
+
+  /** 页面跳转函数 */
+
   /** 渲染相关函数 */
 
   render () {
+
     return (
       <View className='page'>
-        <View className="role-pic">
-          <Text className="orange">乐婉</Text>
-          <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/roles/1.jpg"></Image>
-          <Text>相似度: <Text className="orange">75%</Text></Text>
+        <View className='room-name'>
+          <View className='room-name-item name'>紫藤夫人</View>
+          <View className='room-name-item'>房间号：666666</View>
+          <View className='room-name-item'>角色：5</View>
+          <Button size='mini' className='room-name-item button'>第一轮搜证</Button>
         </View>
-        <View className="role-tip">
-        女，瘦弱内秀，做事勤快，待人温柔。穿传统服饰，平底鞋。
+        <View className="gameBox">
+
         </View>
-        <View className="role-footer">
-          <Button className="first">重新匹配</Button>
-          <Button className="second">马上开始</Button>
-        </View>
+        <View className='main'>
+          <ScrollView scrollY className='scrollview'>
+            <View className='message-item'>
+              <View className='orange'>系统：</View>
+              <View>
+                <Text className='white'>我是房主</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【婉儿】</Text>角色。
+              </View>
+            </View>
+            <View className='message-item'>
+              <View className='orange'>系统：</View>
+              <View>
+                <Text className='white'>我是玩家1</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【张三】</Text>角色。
+              </View>
+            </View>
+            <View className='message-item'>
+              <View className='orange'>系统：</View>
+              <View>
+                <Text className='white'>我是玩家2</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【王五】</Text>角色。
+              </View>
+            </View>
+          </ScrollView>
+      </View>
       </View>
     )
   }
+
   /** 业务函数 */
+
   initData () {
   }
 }

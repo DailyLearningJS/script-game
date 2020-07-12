@@ -91,7 +91,7 @@ export default class GamePage extends Component {
               return (
                 <View className='info-item' key={r}>
                   <View className='left'>
-                    <Image src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/user/' + (i + 1) + '.png'} />
+                    <Image src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@2.0/src/res/user/' + (i + 1) + '.png'} />
                   </View>
                   <View class='right'>
                     <Text className='info-title'>{r.name}: </Text>
@@ -104,13 +104,13 @@ export default class GamePage extends Component {
       <View className='main'>
           <View className='main-title'>
             <View className='left'>
-              <Image className='img' src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/user/7.png'></Image>
+              <Image className='img' src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@2.0/src/res/user/7.png'></Image>
               <View className='role'>房主</View>
               <View className='name'>我是房主</View>
             </View>
             <View className='right'>
               <View>角色分配： <Text className='feature'>允许反串</Text></View>
-              <Button size='mini' className='button'>开始检测</Button>
+              <Button size='mini' className='button' onClick={this.goCamera}>开始检测</Button>
             </View>
           </View>
           <ScrollView scrollY className='scrollview'>
@@ -153,7 +153,13 @@ export default class GamePage extends Component {
       activeRole: play.roles[0]
     })
   }
-
+  goCamera () {
+    Promise.resolve().then(() => {
+      Taro.navigateTo({
+        url: '/pages/packages/play/pages/camera/index'
+      })
+    })
+  }
   tryCreateAnRoom () {
     Promise.resolve().then(() => {
       Taro.navigateTo({

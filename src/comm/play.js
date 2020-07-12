@@ -38,7 +38,7 @@ const getBasicModel = (i) => {
   return {
     _id: getRandomID(),
     name: '普通的剧本',
-    src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/play/' + i +'.jpg',
+    src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@2.0/src/res/play/' + i +'.jpg',
     stars: +((Math.random() * 5).toFixed(0)) || 1,
     // 剧本本身的标签
     tags,

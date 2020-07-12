@@ -136,7 +136,7 @@ export default class RoomPage extends Component {
                   return (
                     <View className='info-item' key={r}>
                       <View className='left'>
-                        <Image src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@1.0/src/res/user/' + (i + 1) + '.png'} />
+                        <Image src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@2.0/src/res/user/' + (i + 1) + '.png'} />
                       </View>
                       <View class='right'>
                         <Text className='info-title'>{r.name}: </Text>
