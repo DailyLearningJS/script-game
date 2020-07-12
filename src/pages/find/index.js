@@ -46,7 +46,7 @@ export default class Find extends Component {
         {/* 广播 */}
         <View className='tips'>
           <Text> 约本广场 </Text>
-          <Image src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@2.0/src/res/sound-filling-fill.png' style='width: 16px;height:16px;margin:0 5px;' />
+          <Image src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@3.0/src/res/sound-filling-fill.png' style='width: 16px;height:16px;margin:0 5px;' />
           <Swiper
             className='tips-content' 
             autoplay

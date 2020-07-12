@@ -14,6 +14,18 @@ export default class AccountPage extends Component {
   state = {
   }
   store = {
+    actions: [
+      'segments',
+      'threads',
+      'note',
+      'open-chat',
+    ],
+    actionNameReflex: {
+      'segments': '剧本',
+      'threads': '线索',
+      'note': '笔记',
+      'open-chat': ''
+    }
   }
 
   /** 页面生命周期 & 生命周期相关函数 */
@@ -45,7 +57,42 @@ export default class AccountPage extends Component {
           <Button size='mini' className='room-name-item button'>第一轮搜证</Button>
         </View>
         <View className="gameBox">
-
+          <View className="tipButton" style="top: 100px; right: 100px;" onClick={this.goDetail}>台灯</View>
+          <View className="tipButton" style="top:200px; left: 100px;" onClick={this.goDetail}>花盆</View>
+        </View>
+        <View className='action-segment fsbc'>
+          <View className='actions-con f1 fsac'>
+            {
+              this.store.actions.map(action => {
+                return (
+                  <View
+                    className='action-con fcc-c'
+                    hover-class='action-con-hover'
+                    hover-start-time='0'
+                    hover-stay-time='260'
+                    hover-stop-propagation
+                    onClick={this.handleActionClick.bind(this, action)}
+                    onLongPress={this.handleActionPress.bind(this, action)}
+                    key={action}
+                  >
+                    {
+                      action === 'segments' && <Text className='iconfont'>&#xe620;</Text>
+                    }
+                    {
+                      action === 'threads' && <Text className='iconfont'>&#xe618;</Text>
+                    }
+                    {
+                      action === 'open-chat' && <Text className='iconfont'>&#xe627;</Text>
+                    }
+                    {
+                      action === 'note' && <Text className='iconfont'>&#xe603;</Text>
+                    }
+                    <Text className='fs22 action-name'>{this.store.actionNameReflex[action]}</Text>
+                  </View>
+                )
+              })
+            }
+          </View>
         </View>
         <View className='main'>
           <ScrollView scrollY className='scrollview'>
@@ -69,10 +116,20 @@ export default class AccountPage extends Component {
             </View>
           </ScrollView>
       </View>
+      <View className="panelMock">
+          <View className="panel">
+          <View className="paneltop">
+            <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@3.0/src/res/wxfeature/close.png" className="closeBtn"></Image>
+          </View>
+            这里是弹窗
+          </View>
       </View>
+    </View>
     )
   }
-
+  goDetail () {
+    
+  }
   /** 业务函数 */
 
   initData () {

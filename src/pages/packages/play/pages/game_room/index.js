@@ -91,7 +91,7 @@ export default class GamePage extends Component {
               return (
                 <View className='info-item' key={r}>
                   <View className='left'>
-                    <Image src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@2.0/src/res/user/' + (i + 1) + '.png'} />
+                    <Image src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@3.0/src/res/user/' + (i + 1) + '.png'} />
                   </View>
                   <View class='right'>
                     <Text className='info-title'>{r.name}: </Text>
@@ -104,7 +104,7 @@ export default class GamePage extends Component {
       <View className='main'>
           <View className='main-title'>
             <View className='left'>
-              <Image className='img' src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@2.0/src/res/user/7.png'></Image>
+              <Image className='img' src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@3.0/src/res/user/7.png'></Image>
               <View className='role'>房主</View>
               <View className='name'>我是房主</View>
             </View>
