@@ -42,11 +42,25 @@ export default class RoomPage extends Component {
         女，瘦弱内秀，做事勤快，待人温柔。穿传统服饰，平底鞋。
         </View>
         <View className="role-footer">
-          <Button className="first">重新匹配</Button>
-          <Button className="second">马上开始</Button>
+          <Button className="first" onClick={restart}>重新匹配</Button>
+          <Button className="second" onClick={start}>马上开始</Button>
         </View>
       </View>
     )
+  }
+  restart () {
+    Promise.resolve().then(() => {
+        Taro.navigateTo({
+          url: '../packages/play/pages/game_room/index'
+        })
+      })
+  }
+  start () {
+    Promise.resolve().then(() => {
+        Taro.navigateTo({
+          url: '../packages/play/pages/game/index'
+        })
+      })
   }
   /** 业务函数 */
   initData () {
