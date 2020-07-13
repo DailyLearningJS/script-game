@@ -118,7 +118,7 @@ export default class PreparePage extends Component {
             players.map((player, i) => {
               return (
                 <View className='player-con fcc-c' key={player.name}>
-                  <Image className='role-icon' src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@3.0/src/res/user/' + (i + 1) + '.png'} mode='aspectFill' />
+                  <Image className='role-icon' src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/user/' + (i + 1) + '.png'} mode='aspectFill' />
                   <View className='role-name'>{player.name}</View>
                 </View>
               )
@@ -170,7 +170,7 @@ export default class PreparePage extends Component {
                       className='role-con br8 bgc-w fsac'
                       onClick={this.activeRole.bind(this, r)}
                     >
-                      <Image className='role-avatar' src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@3.0/src/res/user/' + (idx + 1) + '.png'} mode='aspectFill' />
+                      <Image className='role-avatar' src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/user/' + (idx + 1) + '.png'} mode='aspectFill' />
                       <View className='role-info-con h100 f1 fsbs-c'>
                         <View className='role-info-wrapper'>
                           <View className='role-name fs24 c444'>{r.name}</View>
@@ -184,7 +184,7 @@ export default class PreparePage extends Component {
                               roleSelectedRec[r.name].map((player, pidx) => {
                                 return (
                                   <View key={player.name}>
-                                    <Image className={'player-icon ' + (pidx === 0 ? 'first' : '')} src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@3.0/src/res/user/' + (pidx + 1) + '.png'} mode='aspectFill' />
+                                    <Image className={'player-icon ' + (pidx === 0 ? 'first' : '')} src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/user/' + (pidx + 1) + '.png'} mode='aspectFill' />
                                     {
                                       roleSelectedRec[r.name].length > 1 && pidx === 0 && (
                                         <View className='split-line'></View>

@@ -35,7 +35,7 @@ export default class RoomPage extends Component {
       <View className='page'>
         <View className="role-pic">
           <Text className="orange">乐婉</Text>
-          <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@3.0/src/res/roles/1.jpg"></Image>
+          <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/roles/1.jpg"></Image>
           <Text>相似度: <Text className="orange">75%</Text></Text>
         </View>
         <View className="role-tip">

@@ -23,11 +23,12 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/home/index',
       'pages/account/index',
       'pages/room/index',
-      'pages/home/index',
       'pages/find/index',
-      'pages/message/index'
+      'pages/message/index',
+      'pages/book/index'
     ],
     subPackages: [
       {

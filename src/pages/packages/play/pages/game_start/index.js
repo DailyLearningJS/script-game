@@ -12,6 +12,8 @@ export default class AccountPage extends Component {
     navigationBarTitleText: '剧本杀'
   }
   state = {
+    showPanel: false,
+    panelContent: ''
   }
   store = {
     actions: [
@@ -71,7 +73,7 @@ export default class AccountPage extends Component {
                     hover-start-time='0'
                     hover-stay-time='260'
                     hover-stop-propagation
-                    onClick={this.handleActionClick.bind(this, action)}
+                    onClick={this.goDetail}
                     onLongPress={this.handleActionPress.bind(this, action)}
                     key={action}
                   >
@@ -116,14 +118,28 @@ export default class AccountPage extends Component {
             </View>
           </ScrollView>
       </View>
+      { this.state.showPanel && <View className="panelMock">
+          <View className="panel">
+          <View className="paneltop">
+            <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/wxfeature/close.png" className="closeBtn" onClick={this.closePanel}></Image>
+          </View>
+            { this.state.panelContent || '剧本逻辑推理性很强，沉浸感不错' }
+          </View>
       </View>
+    }
+    </View>
     )
   }
-  goDetail () {
-    Taro.navigateTo({
-      url: '/pages/packages/play/pages/game/index'
+  closePanel () {
+    this.setState({
+      showPanel: false
     })
   }
+  goDetail () {
+    this.setState({
+      showPanel: true
+    })
+  } 
   /** 业务函数 */
 
   initData () {

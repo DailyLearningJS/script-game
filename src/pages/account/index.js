@@ -1,137 +1,126 @@
 import Taro, { Component } from '@tarojs/taro'
 // eslint-disable-next-line no-unused-vars
-import { Block, View, Text, Image, Swiper, SwiperItem, Button, ScrollView } from '@tarojs/components';
+import { View, Text, Block, Image, Swiper, SwiperItem } from '@tarojs/components'
 
+import Tabbar from '../../components/tabbar/index'
+import Play from '../../components/play/index'
+import CBlock from '../../components/cblock/index'
+
+import { getRandomBasicPlayData } from '../../comm/play.js'
 
 import './index.less'
 
 
-export default class AccountPage extends Component {
+export default class standardPage extends Component {
 
   config = {
-    navigationBarTitleText: '剧本杀'
-  }
-  state = {
   }
   store = {
-    actions: [
-      'segments',
-      'threads',
-      'note',
-      'open-chat',
+    swipers: [
+      {
+        name: '谋杀之谜',
+        src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/banner/banner.jpg'
+      },
+      {
+        name: '恶人之森',
+        src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/banner/banner1.jpg'
+      },
     ],
-    actionNameReflex: {
-      'segments': '剧本',
-      'threads': '线索',
-      'note': '笔记',
-      'open-chat': ''
-    }
+    button: [
+      {
+        title: '会员管理',
+        url: ''
+      },
+      {
+        title: '预约管理',
+        url: ''
+      },
+      {
+        title: '消费记录',
+        url: ''
+      },
+      {
+        title: '充值记录',
+        url: ''
+      },
+      {
+        title: '买单记录',
+        url: ''
+      },
+      {
+        title: '剧本管理',
+        url: ''
+      },
+      {
+        title: '上传剧本',
+        url: ''
+      },
+      {
+        title: '优惠券管理',
+        url: ''
+      }
+    ]
   }
 
   /** 页面生命周期 & 生命周期相关函数 */
 
-  componentWillMount () {
-    this.initData()
-  }
+  componentWillMount () {}
   componentDidShow () {}
 
-  /** 页面交互逻辑函数 */
-
-
-  previewImage (url) {
-    Taro.$previewOndImage(url)
-  }
-
   /** 页面跳转函数 */
+
+  goRoom (id) {
+    Taro.navigateTo({
+      url: `../room/index?playid=${id}`
+    })
+  }
 
   /** 渲染相关函数 */
 
   render () {
+    const { swipers, tips, plays } = this.store
 
     return (
-      <View className='page'>
-        <View className='room-name'>
-          <View className='room-name-item name'>紫藤夫人</View>
-          <View className='room-name-item'>房间号：666666</View>
-          <View className='room-name-item'>角色：5</View>
-          <Button size='mini' className='room-name-item button'>第一轮搜证</Button>
-        </View>
-        <View className="gameBox">
-          <View className="tipButton" style="top: 100px; right: 100px;" onClick={this.goDetail}>台灯</View>
-          <View className="tipButton" style="top:200px; left: 100px;" onClick={this.goDetail}>花盆</View>
-        </View>
-        <View className='action-segment fsbc'>
-          <View className='actions-con f1 fsac'>
+      <View className='page with-tabbar'>
+
+        {/* 顶部轮播图 */}
+        <CBlock delay={100}>
+          <Swiper
+            className='header-swiper'
+            autoplay
+            indicatorColor='#d2d8e3'
+            indicatorActiveColor='rgb(208,18,50)'
+            circular
+            indicatorDots
+            onChange={this.setIndicators.bind(this)}
+          >
             {
-              this.store.actions.map(action => {
+              swipers.map((s, i) => {
                 return (
-                  <View
-                    className='action-con fcc-c'
-                    hover-class='action-con-hover'
-                    hover-start-time='0'
-                    hover-stay-time='260'
-                    hover-stop-propagation
-                    onClick={this.handleActionClick.bind(this, action)}
-                    onLongPress={this.handleActionPress.bind(this, action)}
-                    key={action}
-                  >
-                    {
-                      action === 'segments' && <Text className='iconfont'>&#xe620;</Text>
-                    }
-                    {
-                      action === 'threads' && <Text className='iconfont'>&#xe618;</Text>
-                    }
-                    {
-                      action === 'open-chat' && <Text className='iconfont'>&#xe627;</Text>
-                    }
-                    {
-                      action === 'note' && <Text className='iconfont'>&#xe603;</Text>
-                    }
-                    <Text className='fs22 action-name'>{this.store.actionNameReflex[action]}</Text>
-                  </View>
+                  <SwiperItem key={i} style='background:url({{s.src}});background-repeat: no-repeat;background-size:100% 100%;'>
+                 
+                  </SwiperItem>
                 )
               })
             }
+          </Swiper>
+        </CBlock>
+        <View className="buttonView">
+          {
+            this.store.button.map(btn => {
+            return (<Button className="button" onClick={() => this.goUrl(btn.url)}>{btn.title}</Button>)
+            })
+          }
           </View>
-        </View>
-        <View className='main'>
-          <ScrollView scrollY className='scrollview'>
-            <View className='message-item'>
-              <View className='orange'>系统：</View>
-              <View>
-                <Text className='white'>我是房主</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【婉儿】</Text>角色。
-              </View>
-            </View>
-            <View className='message-item'>
-              <View className='orange'>系统：</View>
-              <View>
-                <Text className='white'>我是玩家1</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【张三】</Text>角色。
-              </View>
-            </View>
-            <View className='message-item'>
-              <View className='orange'>系统：</View>
-              <View>
-                <Text className='white'>我是玩家2</Text>通过 <Text className='orange'>人脸检测</Text>， 匹配<Text className='orange'>【王五】</Text>角色。
-              </View>
-            </View>
-          </ScrollView>
+       
+
       </View>
-      <View className="panelMock">
-          <View className="panel">
-          <View className="paneltop">
-            <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@3.0/src/res/wxfeature/close.png" className="closeBtn"></Image>
-          </View>
-            这里是弹窗
-          </View>
-      </View>
-    </View>
     )
   }
-  goDetail () {
-    
+  goUrl (url) {
+    Taro.navigateTo({
+      url
+    })
   }
-  /** 业务函数 */
 
-  initData () {
-  }
 }

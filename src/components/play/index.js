@@ -29,7 +29,7 @@ export default class PlayCmpt extends Component {
   /** 渲染相关函数 */
 
   render () {
-    const { play, showStar } = this.props
+    const { play, showStar,showStarForce, showBtn1, showBtn2 } = this.props
     return (
       <View className='play-cmpt fsbc'>
         <View className={showStar && 'starBox'}>
@@ -42,7 +42,7 @@ export default class PlayCmpt extends Component {
               }
             </Text>}
         </View>
-        {!showStar && <View className='content-con f1'>
+        {(!showStar || showStarForce ) && <View className='content-con f1'>
 
           {/* name */}
           <View className='fsbs'>
@@ -66,7 +66,13 @@ export default class PlayCmpt extends Component {
               })
             }
           </View>
-
+          {showStarForce && <Text className='stars-con'>
+              {
+                Array.apply(null, { length: play.stars || 0 }).map((x, idx) => {
+                  return <Text className={`iconfont fs20 star star-${play.stars.length}`} key={x + idx}>&#xe6ac;</Text>
+                })
+              }
+            </Text>}
           {/* brief */}
           <View className='brief-con w100 h80'>
             {
@@ -75,7 +81,14 @@ export default class PlayCmpt extends Component {
               })
             }
           </View>
+          { showBtn2 && <View className="playButton">快速预约</View> }
         </View>
+        }
+        {
+          (showBtn1 || showBtn2) && <View className="thirdFlex">
+            {showBtn1 && <View className="distance">1700m</View>}
+            { showBtn1 && <View className="playButton">查看详情</View> }
+          </View>
         }
 
       </View>
