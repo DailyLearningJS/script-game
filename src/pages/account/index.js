@@ -58,6 +58,38 @@ export default class standardPage extends Component {
       {
         title: '优惠券管理',
         url: ''
+      },
+      {
+        title: '消息通知',
+        url: ''
+      },
+      {
+        title: '价格设置',
+        url: ''
+      },
+      {
+        title: '用户画像分布',
+        url: ''
+      },
+      {
+        title: '剧本评分数据',
+        url: ''
+      },
+      {
+        title: '店铺评分数据',
+        url: ''
+      },
+      {
+        title: '帮助教程',
+        url: ''
+      },
+      {
+        title: '积分设置',
+        url: ''
+      },
+      {
+        title: '门店资料',
+        url: ''
       }
     ]
   }
