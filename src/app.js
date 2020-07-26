@@ -23,12 +23,13 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/message/index',
       'pages/home/index',
+      'pages/message/index',
       'pages/account/index',
       'pages/room/index',
       'pages/find/index',
-      'pages/book/index'
+      'pages/book/index',
+      'pages/features/index'
     ],
     subPackages: [
       {
@@ -40,7 +41,8 @@ class App extends Component {
           'pages/game_room/index',
           'pages/setting/index',
           'pages/camera/index',
-          'pages/role/index'
+          'pages/role/index',
+          'pages/member/index'
         ]
       }
     ],

@@ -88,7 +88,7 @@ export default class AccountPage extends Component {
           {
             this.store.tools.map((item, index) => {
               return (
-                <View className="tool-item" onClick={() => this.goUrl(item.url)}>
+                <View className="tool-item" onClick={this.goUrl}>
                   <View>
                     <Image src={item.icon} mode='aspectFill' />
                     <Text>{item.name}</Text>
@@ -105,10 +105,9 @@ export default class AccountPage extends Component {
     )
   }
   /** 业务函数 */
-  goUrl(url){
-    console.error(123)
+  goUrl(){
     Taro.navigateTo({
-      url
+      url: '../packages/play/pages/features/index'
     })
   }
   initData () {

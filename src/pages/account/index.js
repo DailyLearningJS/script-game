@@ -1,160 +1,116 @@
 import Taro, { Component } from '@tarojs/taro'
 // eslint-disable-next-line no-unused-vars
-import { View, Text, Block, Image, Swiper, SwiperItem } from '@tarojs/components'
+import { Block, View, Text, Image, Swiper, SwiperItem, Button, ScrollView } from '@tarojs/components';
 
-import Tabbar from '../../components/tabbar/index'
-import Play from '../../components/play/index'
-import CBlock from '../../components/cblock/index'
-
-import { getRandomBasicPlayData } from '../../comm/play.js'
 
 import './index.less'
 
-
-export default class standardPage extends Component {
+export default class AccountPage extends Component {
 
   config = {
+    navigationBarTitleText: '剧本杀桌游'
+  }
+  state = {
+    playerList: [
+      { isVip: true },
+      { isVip: true },
+      { isVip: true },
+      { isVip: false },
+      { isVip: false },
+      { isVip: false },
+      { isVip: false },
+      { isVip: false }
+    ]
   }
   store = {
-    swipers: [
+    tools: [
       {
-        name: '谋杀之谜',
-        src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@6.0/src/res/banner/banner.jpg'
-      },
-      {
-        name: '恶人之森',
-        src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@6.0/src/res/banner/banner1.jpg'
-      },
-    ],
-    button: [
-      {
-        title: '会员管理',
-        url: '../packages/play/pages/member/index'
-      },
-      {
-        title: '预约管理',
+        name: '游戏预约',
+        icon: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@6.0/src/res/me/4.png',
         url: ''
       },
       {
-        title: '消费记录',
+        name: '已上剧本',
+        icon: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@6.0/src/res/me/3.png',
         url: ''
       },
       {
-        title: '充值记录',
+        name: '店铺主持',
+        icon: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@6.0/src/res/me/2.png',
         url: ''
-      },
-      {
-        title: '买单记录',
+      },{
+        name: '本店会员',
+        icon: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@6.0/src/res/me/6.png',
         url: ''
-      },
-      {
-        title: '剧本管理',
-        url: ''
-      },
-      {
-        title: '上传剧本',
-        url: ''
-      },
-      {
-        title: '优惠券管理',
-        url: ''
-      },
-      {
-        title: '消息通知',
-        url: ''
-      },
-      {
-        title: '价格设置',
-        url: ''
-      },
-      {
-        title: '用户画像分布',
-        url: ''
-      },
-      {
-        title: '剧本评分数据',
-        url: ''
-      },
-      {
-        title: '店铺评分数据',
-        url: ''
-      },
-      {
-        title: '帮助教程',
-        url: ''
-      },
-      {
-        title: '积分设置',
-        url: ''
-      },
-      {
-        title: '门店资料',
+      },{
+        name: '管理后台',
+        icon: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@6.0/src/res/me/5.png',
         url: ''
       }
     ]
   }
-
   /** 页面生命周期 & 生命周期相关函数 */
 
-  componentWillMount () {}
+  componentWillMount () {
+    this.initData()
+  }
   componentDidShow () {}
 
-  /** 页面跳转函数 */
+  /** 页面交互逻辑函数 */
 
-  goRoom (id) {
-    Taro.navigateTo({
-      url: `../room/index?playid=${id}`
-    })
+
+  previewImage (url) {
+    Taro.$previewOndImage(url)
   }
+
+  /** 页面跳转函数 */
 
   /** 渲染相关函数 */
 
   render () {
-    const { swipers, tips, plays } = this.store
-    const goUrl = this.goUrl.bind(this)
-    return (
-      <View className='page with-tabbar'>
 
-        {/* 顶部轮播图 */}
-        <CBlock delay={100}>
-          <Swiper
-            className='header-swiper'
-            autoplay
-            indicatorColor='#d2d8e3'
-            indicatorActiveColor='rgb(208,18,50)'
-            circular
-            indicatorDots
-            onChange={this.setIndicators.bind(this)}
-          >
-            {
-              swipers.map((s, i) => {
-                return (
-                  <SwiperItem key={i} style='background:url({{s.src}});background-repeat: no-repeat;background-size:100% 100%;'>
-                 
-                  </SwiperItem>
-                )
-              })
-            }
-          </Swiper>
-        </CBlock>
-        <View className="buttonView">
+    return (
+      <View className='page'>
+        <View className="userlist">
+          <View className="userlist-item">
+            <Image className="user-icon" src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@6.0/src/res/user/1.png' mode='aspectFill' />
+            <View className="userInfo">
+              <View className="name">
+                <Text>桃子🍑</Text>
+                <View className="role">我是店家</View>
+              </View>
+              <Text className="id">ID: 88888888</Text>
+            </View>
+            <Image className="user-pic" src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@6.0/src/res/me/1.png' mode='aspectFill' />
+          </View>
+        </View>
+        <View className="tools">
           {
-            this.store.button.map(btn => {
-            return (<Button className="button" onClick={()=>goUrl(btn.url)}>{btn.title}</Button>)
+            this.store.tools.map((item, index) => {
+              return (
+                <View className="tool-item" onClick={this.goUrl}>
+                  <View>
+                    <Image src={item.icon} mode='aspectFill' />
+                    <Text>{item.name}</Text>
+                  </View>
+                  <View>
+                    <Text>&gt;</Text>
+                  </View>
+                </View>
+              )
             })
           }
-          </View>
-       
-
+        </View>
       </View>
     )
   }
-  goUrl (url) {
-    console.error('hahah')
-    if(!url) return
+  /** 业务函数 */
+  goUrl(){
     Taro.navigateTo({
-      url
+      url: '../features/index'
     })
   }
-
+  initData () {
+   
+  }
 }
