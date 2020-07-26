@@ -1,0 +1,73 @@
+.page {
+    background: rgba(5,61,67,0.4);
+    padding-bottom: 0px;
+    .filter {
+      background: rgba(5, 61, 67, 0.7);
+      font-size: 28px;
+      color: #fff;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+      display: flex;
+      justify-content: space-around;
+      View {
+        display: flex;
+        align-items: center;
+        image {
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+        }
+      }
+      
+    }
+    .userlist {
+      padding: 50px 20px;
+      .userlist-item {
+        display:flex;
+        justify-content: space-between;
+        align-items:center;
+        image {
+          width: 100px;
+          height: 100px;
+          border-radius: 50px;
+          margin: 0 10px 20px 20px ;
+        }
+        .userInfo {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          .name {
+            color: #fff;
+            font-size: 30px;
+          }
+          .time {
+            color: rgba(5, 61, 67, 0.4);
+            font-size: 26px;
+          }
+        }
+        .buttonArea {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .normal {
+            font-size: 30px;
+            padding: 15px 10px;
+            border-radius: 15px;
+            background: rgb(5, 61, 67);
+            color: #fff;
+            &.vip {
+              background: rgb(242, 220, 7);
+              color: rgb(5, 61, 67);
+            }
+          }
+          .button-number {
+            color: rgba(5, 61, 67, 0.4);
+            font-size: 26px;
+          }
+        }
+      }
+    }
+  }
+  
+  

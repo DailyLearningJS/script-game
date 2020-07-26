@@ -8,7 +8,7 @@ import './index.less'
 export default class AccountPage extends Component {
 
   config = {
-    navigationBarTitleText: '剧本杀桌游'
+    navigationBarTitleText: '会员页'
   }
   state = {
     playerList: [

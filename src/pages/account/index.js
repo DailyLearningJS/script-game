@@ -29,7 +29,7 @@ export default class standardPage extends Component {
     button: [
       {
         title: '会员管理',
-        url: ''
+        url: '../packages/play/pages/member/index'
       },
       {
         title: '预约管理',
@@ -111,7 +111,7 @@ export default class standardPage extends Component {
 
   render () {
     const { swipers, tips, plays } = this.store
-
+    const goUrl = this.goUrl.bind(this)
     return (
       <View className='page with-tabbar'>
 
@@ -140,7 +140,7 @@ export default class standardPage extends Component {
         <View className="buttonView">
           {
             this.store.button.map(btn => {
-            return (<Button className="button" onClick={() => this.goUrl(btn.url)}>{btn.title}</Button>)
+            return (<Button className="button" onClick={()=>goUrl(btn.url)}>{btn.title}</Button>)
             })
           }
           </View>
@@ -150,6 +150,8 @@ export default class standardPage extends Component {
     )
   }
   goUrl (url) {
+    console.error('hahah')
+    if(!url) return
     Taro.navigateTo({
       url
     })
