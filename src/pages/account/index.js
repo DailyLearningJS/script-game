@@ -19,11 +19,11 @@ export default class standardPage extends Component {
     swipers: [
       {
         name: '谋杀之谜',
-        src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/banner/banner.jpg'
+        src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@6.0/src/res/banner/banner.jpg'
       },
       {
         name: '恶人之森',
-        src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/banner/banner1.jpg'
+        src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@6.0/src/res/banner/banner1.jpg'
       },
     ],
     button: [

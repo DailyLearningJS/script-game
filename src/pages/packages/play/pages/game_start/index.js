@@ -210,10 +210,10 @@ export default class AccountPage extends Component {
       </View>
       { this.state.showPanel && <View className="panelMock">
           <View className="panel">
-          <View className="paneltop">
-            <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/wxfeature/close.png" className="closeBtn" onClick={this.closePanel}></Image>
-          </View>
-            { this.state.panelContent || '剧本逻辑推理性很强，沉浸感不错' }
+            <View className="paneltop">
+              <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@6.0/src/res/wxfeature/close.png" className="closeBtn" onClick={this.closePanel}></Image>
+            </View>
+              { this.state.panelContent || '剧本逻辑推理性很强，沉浸感不错' }
           </View>
       </View>
     }
@@ -237,7 +237,7 @@ export default class AccountPage extends Component {
     let setIntervalId = null;
     setIntervalId = setInterval(() => {
       let roleList = this.state.roleList.concat(roleInArr[index])
-      if(this.state.roleList.length > 7) {
+      if(this.state.roleList.length > 4) {
         clearInterval(setIntervalId)
         return
       }
