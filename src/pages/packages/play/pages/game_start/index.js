@@ -211,7 +211,7 @@ export default class AccountPage extends Component {
       { this.state.showPanel && <View className="panelMock">
           <View className="panel">
           <View className="paneltop">
-            <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/wxfeature/close.png" className="closeBtn" onClick={this.closePanel}></Image>
+            <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/wxfeature/close.png" className="closeBtn" onClick={this.closePanel}></Image>
           </View>
             { this.state.panelContent || '剧本逻辑推理性很强，沉浸感不错' }
           </View>

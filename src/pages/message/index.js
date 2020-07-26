@@ -46,13 +46,13 @@ export default class AccountPage extends Component {
       <View className='page'>
         <View className='filter'>
           <View>
-            会员等级<Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/wxfeature/sort.svg"></Image>
+            会员等级<Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/wxfeature/sort.svg"></Image>
           </View>
           <View>
-            注册时间<Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/wxfeature/sort.svg"></Image>
+            注册时间<Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/wxfeature/sort.svg"></Image>
           </View>
           <View>
-            活跃度<Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/wxfeature/sort.svg"></Image>
+            活跃度<Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/wxfeature/sort.svg"></Image>
           </View>
         </View> 
         <View className="userlist">
@@ -60,7 +60,7 @@ export default class AccountPage extends Component {
             this.state.playerList.map((item, index) => {
               return (
                 <View className="userlist-item" key={index}>
-                  <Image src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/user/'+ (index + 1) +'.png'} mode='aspectFill' />
+                  <Image src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/user/'+ (index + 1) +'.png'} mode='aspectFill' />
                   <View className="userInfo">
                     <Text className="name">桃子🍑</Text>
                     <Text className="time">2020-05-01 12:00:00</Text>

@@ -37,7 +37,7 @@ export default class CommentCmpt extends Component {
         <View className='user-con fsbc'>
           <Image
             className='user-avatar'
-            src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/user/' + (random + 1) + '.png'}
+            src={'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/user/' + (random + 1) + '.png'}
             mode='aspectFit'
           />
           <View className='user-info-con fsbs-c'>

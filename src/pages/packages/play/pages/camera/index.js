@@ -66,9 +66,9 @@ export default class RoomPage extends Component {
         { !this.state.src  ? <Camera mode="normal" device-position="front" flash="off" binderror="error" className="camera"></Camera>
         : <Image src={this.state.src} className="camera"></Image> }
         <View className="wxfeature-footer">
-          <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/wxfeature/picture.png"></Image>
+          <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/wxfeature/picture.png"></Image>
           <Button className='camera-button' plain onClick={this.takePhoto}>拍照</Button>
-          <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/wxfeature/rotate.png"></Image>
+          <Image src="https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/wxfeature/rotate.png"></Image>
         </View>
       </View>
     )

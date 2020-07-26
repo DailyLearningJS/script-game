@@ -19,11 +19,11 @@ export default class standardPage extends Component {
     swipers: [
       {
         name: '谋杀之谜',
-        src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/banner/banner.jpg'
+        src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/banner/banner.jpg'
       },
       {
         name: '恶人之森',
-        src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/banner/banner1.jpg'
+        src: 'https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/banner/banner1.jpg'
       },
     ],
     tips: [
@@ -89,7 +89,7 @@ export default class standardPage extends Component {
         {/* 广播 */}
         <View className='tips'>
           <Text>约本广场</Text>
-          <Image src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/sound-filling-fill.png' style='width: 16px;height:16px;margin:0 5px;' />
+          <Image src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/sound-filling-fill.png' style='width: 16px;height:16px;margin:0 5px;' />
           <Swiper
             className='tips-content' 
             autoplay
@@ -110,7 +110,7 @@ export default class standardPage extends Component {
           <CBlock>
             <View className='room room-big' onClick={this.goBookFamily}>
               <View className='max fcc'>
-                <Image src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/feature/feature1.png' mode='scaleToFill' ></Image>
+                <Image src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/feature/feature1.png' mode='scaleToFill' ></Image>
                 <View className='tool-tip'>
                   <Text style='font-size: 24px;font-weight:bold;'>剧本大厅</Text>
                 </View>
@@ -121,7 +121,7 @@ export default class standardPage extends Component {
             <CBlock>
               <View className='room room-small'>
                 <View className='max fcc'>
-                  <Image src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/feature/feature2.png' mode='scaleToFill' ></Image>
+                  <Image src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/feature/feature2.png' mode='scaleToFill' ></Image>
                   <View className='tool-tip'>
                     <Text style='font-size: 16px;'>快速匹配</Text>
                   </View>
@@ -131,7 +131,7 @@ export default class standardPage extends Component {
             <CBlock>
               <View className='room room-small' onClick={this.goBook}>
                 <View className='max fcc'>
-                  <Image src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@4.0/src/res/feature/feature3.png' mode='scaleToFill' ></Image>
+                  <Image src='https://cdn.jsdelivr.net/gh/DailyLearningJS/script-game@5.0/src/res/feature/feature3.png' mode='scaleToFill' ></Image>
                   <View className='tool-tip'>
                   <Text style='font-size: 16px;'>预约剧本</Text>
                   </View>
